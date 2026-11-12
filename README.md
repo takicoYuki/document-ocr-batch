@@ -88,7 +88,3 @@ src/main/java/io/github/takicoyuki/docbatch
 ├── document/   エンティティ・リポジトリ・サービス
 └── mock/       ローカル用の疑似OCRサービス
 ```
-
-## 開発について
-
-このリポジトリは AI コーディングアシスタントの Claude（Anthropic）を使って作成しています。
