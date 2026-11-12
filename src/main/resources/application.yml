@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: document-ocr-batch
+  datasource:
+    url: jdbc:h2:mem:docdb;DB_CLOSE_DELAY=-1
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+  batch:
+    job:
+      enabled: false   # 起動時の自動実行はしない（API / スケジューラから起動）
+  http:
+    client:
+      connect-timeout: 3s
+      read-timeout: 10s
+
+app:
+  ocr:
+    base-url: http://localhost:8080/mock
+    review-threshold: 0.8
+  ocr-job:
+    schedule:
+      enabled: false
+      cron: "0 */5 * * * *"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  h2:
+    console:
+      enabled: true
+app:
+  ocr-job:
+    schedule:
+      enabled: true
+      cron: "0 * * * * *"
